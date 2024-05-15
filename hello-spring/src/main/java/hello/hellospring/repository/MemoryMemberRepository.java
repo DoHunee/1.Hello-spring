@@ -3,23 +3,15 @@ package hello.hellospring.repository;
 import hello.hellospring.domain.Member;
 import java.util.*;
 
-/**
- * 동시성 문제가 고려되어 있지 않음, 실무에서는 ConcurrentHashMap, AtomicLong 사용 고려
- * 메모리를 이용한 회원 리포지토리 구현체
- */
+
 public class MemoryMemberRepository implements MemberRepository {
 
   // 회원 저장소로 사용할 Map. Key는 회원 ID, Value는 회원 객체
   private static Map<Long, Member> store = new HashMap<>();
-
-  // 회원 ID 생성을 위한 시퀀스 값. 회원이 추가될 때마다 증가
   private static long sequence = 0L;
 
-  /**
-   * 새로운 회원을 저장하는 메서드
-   * @param member 저장할 회원 객체
-   * @return 저장된 회원 객체
-   */
+
+  // Member라는 회원 객체에 시퀀스 값 증가시켜서 store에 저장하는 메서드
   @Override
   public Member save(Member member) {
     member.setId(++sequence); // 회원 ID를 시퀀스를 이용해 설정
@@ -27,11 +19,7 @@ public class MemoryMemberRepository implements MemberRepository {
     return member;
   }
 
-  /**
-   * ID를 통해 회원을 조회하는 메서드
-   * @param id 조회할 회원 ID
-   * @return 조회된 회원 객체를 포함한 Optional 객체
-   */
+  //ID를 통해 회원을 조회하는 메서드
   @Override
   public Optional<Member> findById(Long id) {
     return Optional.ofNullable(store.get(id)); // ID로 회원을 조회하여 Optional로 반환
@@ -59,9 +47,8 @@ public class MemoryMemberRepository implements MemberRepository {
         .findAny(); // 첫 번째로 발견된 일치하는 회원을 Optional로 반환
   }
 
-  /**
-   * 저장소를 비우는 메서드. 주로 테스트에서 사용
-   */
+
+  // 저장소를 비우는 메서드. 주로 테스트에서 사용
   public void clearStore() {
     store.clear(); // 저장소를 초기화
   }

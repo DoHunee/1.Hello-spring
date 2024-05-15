@@ -21,18 +21,17 @@ class MemoryMemberRepositoryTest {
   // MemoryMemberRepository 인스턴스를 생성
   MemoryMemberRepository repository = new MemoryMemberRepository();
 
-  /**
-   * 각 테스트가 끝난 후에 실행되어 저장소를 초기화하는 메서드
-   * @AfterEach 애너테이션을 사용하여 각 테스트 후에 실행
+  /*
+    각 테스트가 끝난 후에 실행되어 저장소를 초기화하는 메서드
+    @AfterEach 애너테이션을 사용하여 각 테스트 후에 실행
    */
   @AfterEach
   public void afterEach() {
     repository.clearStore(); // 저장소를 초기화하여 테스트 간 간섭을 방지
   }
 
-  /**
-    회원 저장 기능을 테스트하는 메서드
-   */
+
+  //회원 저장 기능을 테스트하는 메서드
   @Test
   public void save() {
     // given: 테스트 준비 단계
@@ -47,9 +46,8 @@ class MemoryMemberRepositoryTest {
     assertThat(result).isEqualTo(member); // 저장된 회원이 올바르게 조회되는지 검증
   }
 
-  /**
-   * 이름으로 회원을 찾는 기능을 테스트하는 메서드
-   */
+   
+  //이름으로 회원을 찾는 기능을 테스트하는 메서드 
   @Test
   public void findByName() {
     // given: 테스트 준비 단계
@@ -68,9 +66,7 @@ class MemoryMemberRepositoryTest {
     assertThat(result).isEqualTo(member1); // 이름으로 올바른 회원이 조회되는지 검증
   }
 
-  /**
-   * 모든 회원을 찾는 기능을 테스트하는 메서드
-   */
+  // 모든 회원을 찾는 기능을 테스트하는 메서드
   @Test
   public void findAll() {
     // given: 테스트 준비 단계
@@ -88,3 +84,4 @@ class MemoryMemberRepositoryTest {
     assertThat(result.size()).isEqualTo(2); // 저장된 모든 회원이 올바르게 조회되는지 검증
   }
 }
+
