@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
 
+/* 
+@BeforeEach : 각 테스트 실행 전에 호출된다. 
+테스트가 서로 영향이 없도록 항상 새로운 객체를 생성하고, 
+의존관계도 새로 맺어준다
+*/
 class MemberServiceTest {
   MemberService memberService;
   MemoryMemberRepository memberRepository;
