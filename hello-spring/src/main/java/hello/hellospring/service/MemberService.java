@@ -17,10 +17,11 @@ public class MemberService {
    */
   public Long join(Member member) {
     validateDuplicateMember(member); // 중복 회원 검증
-    memberRepository.save(member);
+    memberRepository.save(member); // 검증 통과하면 memberRepository에 회원 저장
     return member.getId();
   }
 
+  // 중복 회원 검증 코드!!! 
   private void validateDuplicateMember(Member member) {
     memberRepository.findByName(member.getName())
         .ifPresent(m -> {

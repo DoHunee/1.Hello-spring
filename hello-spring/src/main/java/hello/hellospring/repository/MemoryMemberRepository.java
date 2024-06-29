@@ -4,6 +4,8 @@ import hello.hellospring.domain.Member;
 import java.util.*;
 
 
+//회원 레포지토리 구현체
+
 public class MemoryMemberRepository implements MemberRepository {
 
   // 회원 저장소로 사용할 Map. Key는 회원 ID, Value는 회원 객체

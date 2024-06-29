@@ -1,5 +1,6 @@
 package hello.hellospring.domain;
 
+ // 여기서 회원 객체를 만들고!!
 public class Member {
 
   private Long id;
