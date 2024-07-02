@@ -46,11 +46,31 @@ class MemoryMemberRepositoryTest {
     assertThat(result).isEqualTo(member); // 저장된 회원이 올바르게 조회되는지 검증
   }
 
+
+  // ID로 회원을 찾는 기능을 테스트하는 메서드
+  @Test
+  public void findById() {
+    // given : 테스트 준비 단계
+    Member member1 = new Member();
+    member1.setName("spring1");
+    repository.save(member1);
+
+    Member member2 = new Member();
+    member2.setName("spring2");
+    repository.save(member2);
+    
+    // when: 테스트 실행 단계
+    Member result = repository.findById(member1.getId()).get();
+    
+    // then: 테스트 검증 단계
+    assertThat(result).isEqualTo(member1); // Verify that the correct member is searched by ID
+  }
+  
    
   //이름으로 회원을 찾는 기능을 테스트하는 메서드 
   @Test
   public void findByName() {
-    // given: 테스트 준비 단계
+    // given : 테스트 준비 단계
     Member member1 = new Member();
     member1.setName("spring1");
     repository.save(member1);
@@ -65,6 +85,7 @@ class MemoryMemberRepositoryTest {
     // then: 테스트 검증 단계
     assertThat(result).isEqualTo(member1); // 이름으로 올바른 회원이 조회되는지 검증
   }
+
 
   // 모든 회원을 찾는 기능을 테스트하는 메서드
   @Test
