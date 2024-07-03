@@ -16,6 +16,11 @@ import static org.assertj.core.api.Assertions.*;
 테스트 순서에 의존관계가 있는 것은 좋은 테스트가 아니다.
 */
 
+/*  
+4. 회원 레포지토리 테스트 케이스 작성 
+*/
+
+
 class MemoryMemberRepositoryTest {
   
   // MemoryMemberRepository 인스턴스를 생성
@@ -44,6 +49,9 @@ class MemoryMemberRepositoryTest {
     // then: 테스트 검증 단계
     Member result = repository.findById(member.getId()).get();
     assertThat(result).isEqualTo(member); // 저장된 회원이 올바르게 조회되는지 검증
+    
+    // System.out.println("result 는 " + (result == member)); // 저장된 회원이 올바르게 조회되는지 출력
+    
   }
 
 
