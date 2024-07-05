@@ -19,6 +19,9 @@ class MemberServiceTest {
   MemoryMemberRepository memberRepository;
 
   @BeforeEach
+  // 지금 memberservice 입장으로는 직접 new 하지 않고 외부에 memberRepository를 외부에서 넣어주고 있다
+  // 이런것을 DI 라고 한다.
+  // main/service/MemberService.java 에서 보면 memberRepository를 주입받고 있다.
   public void beforeEach() {
     memberRepository = new MemoryMemberRepository();
     memberService = new MemberService(memberRepository);

@@ -15,6 +15,8 @@ public class MemberService {
   
   private final MemberRepository memberRepository;  // 레포지토리를 주입받음
 
+  // 멤버 서비스 레포지토리를 직접 생성하는게 아니라 외부에서 주입받아서 사용하도록 수정한다!!
+  // 왜냐하면 테스트 코드를 작성할때는 레포지토리가 필요 없기 때문이다!!
   public MemberService(MemberRepository memberRepository) {
     this.memberRepository = memberRepository;
   }
