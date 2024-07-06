@@ -3,6 +3,8 @@ package hello.hellospring.repository;
 import hello.hellospring.domain.Member;
 import java.util.*;
 
+import org.springframework.stereotype.Repository;
+
 
 /*  
 3. 회원 레포지토리 구현체
@@ -10,6 +12,8 @@ import java.util.*;
 */
 
 // 상속받아서 틀 잡고!
+
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
  
