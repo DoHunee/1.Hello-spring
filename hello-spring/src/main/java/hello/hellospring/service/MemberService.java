@@ -5,15 +5,14 @@ import hello.hellospring.repository.MemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+
 
 /*  
 5. 회원 서비스 개발  
 실질적인 로직이 돌아가는곳!!
 */
 
-@Service
+
 public class MemberService {
   
   private final MemberRepository memberRepository;  // 레포지토리를 주입받음
@@ -21,7 +20,6 @@ public class MemberService {
   // 멤버 서비스 레포지토리를 직접 생성하는게 아니라 외부에서 주입받아서 사용하도록 수정한다!!
   // 왜냐하면 테스트 코드를 작성할때는 레포지토리가 필요 없기 때문이다!!
 
-  @Autowired
   public MemberService(MemberRepository memberRepository) {
     this.memberRepository = memberRepository;
   }
