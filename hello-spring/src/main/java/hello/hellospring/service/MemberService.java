@@ -5,6 +5,8 @@ import hello.hellospring.repository.MemberRepository;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.transaction.annotation.Transactional;
+
 
 
 /*  
@@ -13,6 +15,7 @@ import java.util.Optional;
 */
 
 
+@Transactional
 public class MemberService {
   
   private final MemberRepository memberRepository;  // 레포지토리를 주입받음
@@ -24,9 +27,7 @@ public class MemberService {
     this.memberRepository = memberRepository;
   }
 
-  /**
-   * 회원가입
-   */
+  // 회원가입
   public Long join(Member member) {
 
     /*
@@ -44,6 +45,7 @@ public class MemberService {
     return member.getId(); // 가입한 회원의 ID 반환!
   }
 
+
   // 중복 회원 검증 코드!!! 
   private void validateDuplicateMember(Member member) {
     memberRepository.findByName(member.getName())
@@ -52,13 +54,14 @@ public class MemberService {
         });
   }
 
-  /**
-   * 전체 회원 조회
-   */
+
+  // 전체 회원 조회 
   public List<Member> findMembers() {
     return memberRepository.findAll();
   }
 
+  
+  // 회원 조회
   public Optional<Member> findOne(Long memberId) {
     return memberRepository.findById(memberId);
   }
