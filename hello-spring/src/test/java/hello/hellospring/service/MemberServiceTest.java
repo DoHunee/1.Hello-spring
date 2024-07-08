@@ -14,6 +14,9 @@ import org.junit.jupiter.api.AfterEach;
 테스트가 서로 영향이 없도록 항상 새로운 객체를 생성하고, 
 의존관계도 새로 맺어준다
 */
+
+
+// 이쪽은 스프링이랑 엮는거 없이 순수하게 JAVA code만 테스트 하는거야!!
 class MemberServiceTest {
   MemberService memberService;
   MemoryMemberRepository memberRepository;
