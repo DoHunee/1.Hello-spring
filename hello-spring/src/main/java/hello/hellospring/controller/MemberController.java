@@ -19,6 +19,9 @@ public class MemberController {
   // @Autowired
   public MemberController(MemberService memberService) {
     this.memberService = memberService;
+
+    // 실제 서비스가 프록시 적용이 되는지 확인하는 부분!
+    System.out.println("MemberController = " + memberService.getClass());
   }
 
   // createMemberForm.html 을 보여준다.

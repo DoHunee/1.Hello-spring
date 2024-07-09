@@ -60,11 +60,11 @@ public class MemoryMemberRepository implements MemberRepository {
     return new ArrayList<>(store.values()); // 저장소에 있는 모든 회원 객체를 List로 반환
   }
    
-  
 
 
   // 5. 저장소를 비우는 메서드. 주로 테스트에서 사용
   public void clearStore() {
     store.clear(); // 저장소를 초기화
   }
+
 }

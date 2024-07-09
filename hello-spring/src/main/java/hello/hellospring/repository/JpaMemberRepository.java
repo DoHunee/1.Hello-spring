@@ -46,5 +46,6 @@ public class JpaMemberRepository implements MemberRepository {
         .getResultList();
   } 
 
+  
 
 }

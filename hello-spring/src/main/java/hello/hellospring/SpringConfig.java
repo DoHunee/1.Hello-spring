@@ -8,7 +8,7 @@ import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.service.MemberService;
 // import jakarta.persistence.EntityManager;
 
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 // import javax.sql.DataSource;
@@ -38,6 +38,8 @@ public class SpringConfig {
   public MemberService memberService() {
     return new MemberService(memberRepository);
   }
+
+
 
   /* 
   @Bean

@@ -26,76 +26,43 @@ public class MemberService {
   public MemberService(MemberRepository memberRepository) {
     this.memberRepository = memberRepository;
   }
-
+  
   // 회원가입
   public Long join(Member member) {
-
     /*
     // 이런식으로 코드를 짜고 => 메소드로 리팩토링 할 수 있다!
     // 마우스 우클릭 => 리팩토링!!
     memberRepository.findByName(member.getName())
     .ifPresent(m -> {
-           throw new IllegalStateException("이미 존재하는 회원입니다.");
-         });
-     */
+          throw new IllegalStateException("이미 존재하는 회원입니다.");
+        });
+    */
 
-    long start = System.currentTimeMillis(); // 시작시간 저장
-    
-    try {
-      validateDuplicateMember(member); // 중복 회원 검증 => 비즈니스 로직 추가!
-      memberRepository.save(member); // 검증 통과하면 memberRepository에 회원 저장
-      return member.getId(); // 가입한 회원의 ID 반환!
-    } 
-    finally {
-      long end = System.currentTimeMillis(); // 종료시간 저장
-      long timeMs = end - start; // 소요시간 계산
-      System.out.println("join() 호출에 걸린 시간 : " + (timeMs) + "ms"); // 총 소요시간 출력
-    }
 
+    validateDuplicateMember(member); // 중복 회원 검증 => 비즈니스 로직 추가!
+    memberRepository.save(member); // 검증 통과하면 memberRepository에 회원 저장
+    return member.getId(); // 가입한 회원의 ID 반환!
   }
 
 
-  // 중복 회원 예외 
+  // 중복 회원 검증 코드!!! 
   private void validateDuplicateMember(Member member) {
-    long start = System.currentTimeMillis(); // 시작 시간 측정
-  
     memberRepository.findByName(member.getName())
         .ifPresent(m -> {
           throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
-  
-    long end = System.currentTimeMillis(); // 종료 시간 측정
-    long timeMs = end - start; // 걸린 시간 계산
-    System.out.println("validateDuplicateMember() 호출에 걸린 시간: " + timeMs + "ms"); // 걸린 시간 출력
   }
 
-
+  
   // 전체 회원 조회 
   public List<Member> findMembers() {
-    long start = System.currentTimeMillis(); // 시작 시간 측정
-
-    List<Member> members = memberRepository.findAll();
-
-    long end = System.currentTimeMillis(); // 종료 시간 측정
-    long timeMs = end - start; // 걸린 시간 계산
-    System.out.println("findMembers() 호출에 걸린 시간: " + timeMs + "ms"); // 걸린 시간 출력
-
-    return members;
-}
+    return memberRepository.findAll();
+  }
 
   
   // 회원 조회
   public Optional<Member> findOne(Long memberId) {
-    long start = System.currentTimeMillis(); // 시작 시간 측정
-
-    Optional<Member> member = memberRepository.findById(memberId);
-
-    long end = System.currentTimeMillis(); // 종료 시간 측정
-    long timeMs = end - start; // 걸린 시간 계산
-    System.out.println(" findOne 호출에 걸린 시간: " + timeMs + "ms"); // 걸린 시간 출력
-
-    return member;
-}
-
+    return memberRepository.findById(memberId);
+  }
 
 }

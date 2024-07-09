@@ -19,8 +19,8 @@ public interface MemberRepository {
   Member save(Member member);  // 저장 기능
   Optional<Member> findById(Long id); //ID로 회원을 조회하는 기능
   Optional<Member> findByName(String name); //이름으로 회원을 조회하는 기능`
-  List<Member> findAll(); // 모든 회원ㅇ르 조회하는 기능
-  void deleteAll();
+  List<Member> findAll(); // 모든 회원 조회하는 기능
+  // void deleteAll(); 
 
 
 }
